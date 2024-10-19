@@ -1,21 +1,23 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #e0f7fa;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  animation: fadeIn 1s ease-in;
 }
 
 .container {
   width: 100%;
   max-width: 400px;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: popUp 0.3s ease-out;
 }
 
 .todo-app h2 {
@@ -24,7 +26,7 @@ body {
   align-items: center;
   margin-bottom: 20px;
   font-size: 24px;
-  color: #333;
+  color: #007bb5;
 }
 
 .todo-app img {
@@ -36,7 +38,7 @@ body {
 #todo-form .row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 #todo-input {
@@ -47,20 +49,24 @@ body {
   font-size: 16px;
 }
 
-
 #add-button {
   padding: 10px 15px;
-  background-color: #28a745;
+  background-color: #007bb5;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   margin-left: 10px;
+  transition: background-color 0.3s ease;
 }
 
-#add-button:hover {
-  background-color: #218838;
+#search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 #list-container {
@@ -76,37 +82,32 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #f0f8ff;
+  transition: background-color 0.3s ease;
 }
 
-/* Delete button styling */
-#list-container li button.delete-btn {
-  background-color: #ab71ae;
+#list-container li button {
+  background-color: #dc3545;
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-#list-container li button.delete-btn:hover {
-  background-color: #c49bc6;
+#todo-counter {
+  text-align: center;
+  font-size: 14px;
+  color: #007bb5;
 }
 
-/* Edit button styling */
-#list-container li button.edit-btn {
-  background-color: #656065; 
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 5px; 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-#list-container li button.edit-btn:hover {
-  background-color: #c87ddd; 
-}
-
-#list-container li button.edit-btn[style*="display: none"] {
-  display: none;
+@keyframes popUp {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
