@@ -39,10 +39,13 @@ function addTodoItem(todoText) {
   deleteBtn.className = "delete-btn";
 
   deleteBtn.addEventListener("click", function () {
-    todoList.removeChild(listItem);
-    todoCount--;
-    updateTodoCounter();
-    saveTodos();
+    listItem.style.animation = "slideOut 0.3s forwards";
+    listItem.addEventListener("animationend", function () {
+      todoList.removeChild(listItem);
+      todoCount--;
+      updateTodoCounter();
+      saveTodos();
+    });
   });
 
   const editBtn = document.createElement("button");
@@ -68,17 +71,23 @@ function addTodoItem(todoText) {
     }
   });
 
+  checkbox.addEventListener("change", function () {
+    if (checkbox.checked) {
+      listItem.classList.add("checked");
+    } else {
+      listItem.classList.remove("checked");
+    }
+  });
+
   listItem.appendChild(checkbox);
   listItem.appendChild(taskText);
   listItem.appendChild(deleteBtn);
   listItem.appendChild(editBtn);
 
   todoList.appendChild(listItem);
-
   todoCount++;
   updateTodoCounter();
 }
-
 
 addTodoBtn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -92,11 +101,9 @@ addTodoBtn.addEventListener("click", function (event) {
   }
 });
 
-
 window.addEventListener("load", function () {
   loadTodos();
 });
-
 
 function searchTodos() {
   const searchText = searchInput.value.toLowerCase();
@@ -108,9 +115,9 @@ function searchTodos() {
       .textContent.toLowerCase();
 
     if (taskText.includes(searchText)) {
-      todos[i].style.display = ""; 
+      todos[i].style.display = "";
     } else {
-      todos[i].style.display = "none"; 
+      todos[i].style.display = "none";
     }
   }
 }

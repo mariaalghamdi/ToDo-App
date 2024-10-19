@@ -1,6 +1,6 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #e0f7fa;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #007bb5);
   margin: 0;
   padding: 0;
   display: flex;
@@ -13,10 +13,11 @@ body {
 .container {
   width: 100%;
   max-width: 400px;
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
   animation: popUp 0.3s ease-out;
 }
 
@@ -26,7 +27,7 @@ body {
   align-items: center;
   margin-bottom: 20px;
   font-size: 24px;
-  color: #007bb5;
+  color: #333;
 }
 
 .todo-app img {
@@ -38,7 +39,7 @@ body {
 #todo-form .row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 #todo-input {
@@ -57,16 +58,7 @@ body {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 10px;
-  transition: background-color 0.3s ease;
-}
-
-#search-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #list-container {
@@ -84,30 +76,81 @@ body {
   align-items: center;
   background-color: #f0f8ff;
   transition: background-color 0.3s ease;
+  animation: fadeInTask 0.5s ease-in-out;
+}
+
+#list-container li.checked {
+  background-color: #d4edda; 
+  text-decoration: line-through;
 }
 
 #list-container li button {
-  background-color: #dc3545;
+  background-color: #007bb5;
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+}
+
+#list-container li .edit-btn {
+  background-color: #007bb5;
 }
 
 #todo-counter {
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   color: #007bb5;
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(0, 123, 181, 0.1);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes popUp {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInTask {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  
+}
+
+#search-input {
+  padding: 10px;
+  border: 1px solid #009688;
+  border-radius: 5px;
+  width: calc(100% - 22px); 
+  margin-bottom: 10px;
+  font-size: 16px; 
 }
